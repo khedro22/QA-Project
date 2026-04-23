@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 
 const authRoutes = require('./routes/auth');
+const categoryRoutes = require('./routes/categories');
 const { authMiddleware } = require('./middleware/auth');
 
 const app = express();
@@ -21,16 +22,19 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/categories', categoryRoutes);
+
 
 // Protected route example
 app.get('/api/auth/me', authMiddleware, async (req, res) => {
+  const user = await req.user.populate('following', 'categoryName');
   res.json({
     user: {
-      id: req.user._id,
-      userName: req.user.userName,
-      email: req.user.email,
-      role: req.user.role,
-      following: req.user.following
+      id: user._id,
+      userName: user.userName,
+      email: user.email,
+      role: user.role,
+      following: user.following
     }
   });
 });
