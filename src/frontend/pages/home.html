@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - Home</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/homeStyle.css">
+</head>
+<body>
+  <header class="home-header">
+    <div class="home-header-inner">
+      <a href="home.html" class="home-logo">
+        <div class="home-logo-icon">LH</div>
+        <span>Learning Hub</span>
+      </a>
+      
+      <div class="header-actions">
+             <a href="admin.html" class="manage-users-link hidden" id="manageUsersLink">
+  Manage Users
+</a>
+        <div class="dropdown" id="notifDropdown">
+          <button class="notif-btn" onclick="toggleNotif()">
+            <span>Notifications</span>
+            <span class="notif-badge" id="notifCount">3</span>
+          </button>
+          <div class="notif-dropdown" id="notifPanel">
+            <div class="notif-dropdown-header">
+              <h4>Notifications</h4>
+              <!-- <button onclick="markAllRead()">Mark all read</button> -->
+            </div>
+            <div id="notifList"></div>
+          </div>
+        </div>
+   
+        <span class="user-name" id="userName">user_123</span>
+        <button class="logout-btn" onclick="showLogoutModal()">Log out</button>
+      </div>
+    </div>
+  </header>
+  <div class="modal-overlay" id="logoutModal">
+    <div class="modal modal-sm">
+      <div class="modal-body text-center">
+        <p class="modal-text">Are you sure you want to log out ?</p>
+      </div>
+      <div class="modal-footer modal-footer-center">
+        <button class="btn btn-secondary" onclick="closeLogoutModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmLogout()">Log out</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/home.js"></script>
+</body>
+  <main class="main-content">
+    <div class="cat-tabs" id="catTabs"></div>
+    
+    <div class="cat-actions" id="catActions"></div>
+    
+    <h2 class="content-section-title" id="sectionTitle">Science - Recent articles & media</h2>
+    
+    <div class="content-grid" id="contentGrid"></div>
+  </main>
+
+  <script src="../scripts/Home.js"></script>
+</body>
+</body>
+</html>

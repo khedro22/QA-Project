@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/adminStyle.css" />
+  </head>
+  <body>
+    <header class="home-header">
+      <div class="home-header-inner">
+        <a href="home.html" class="home-logo">
+          <div class="home-logo-icon">LH</div>
+          <span>Learning Hub</span>
+        </a>
+
+        <div class="header-actions">
+          <div class="dropdown" id="notifDropdown">
+            <button class="notif-btn" onclick="toggleNotif()">
+              <span>Notifications</span>
+              <span class="notif-badge" id="notifCount">3</span>
+            </button>
+            <div class="notif-dropdown" id="notifPanel">
+              <div class="notif-dropdown-header">
+                <h4>Notifications</h4>
+                <!-- <button onclick="markAllRead()">Mark all read</button> -->
+              </div>
+              <div id="notifList"></div>
+            </div>
+          </div>
+
+          <span class="user-name" id="userName">user_123</span>
+          <button class="logout-btn" onclick="showLogoutModal()">
+            Log out
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="content-title-row">
+        <h2>All user accounts</h2>
+        <button class="btn-return" onclick="window.location.href = 'home.html'">
+          Return to Home Page
+        </button>
+      </div>
+      <div class="admin-table">
+        <div class="admin-row admin-head">
+          <div>USER ID</div>
+          <div>USERNAME</div>
+          <div>EMAIL</div>
+          <div>ACTION</div>
+        </div>
+
+        <div class="admin-row">
+          <div>ID1</div>
+          <div>user_123</div>
+          <div>user@gmail.com</div>
+          <div>
+            <button class="btn-delete-detail" onclick="showDeleteModal('ID1')">
+              Delete Account
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-row">
+          <div>ID2</div>
+          <div>user_12</div>
+          <div>user11@gmail.com</div>
+          <div>
+            <button class="btn-delete-detail" onclick="showDeleteModal('ID2')">
+              Delete Account
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-row">
+          <div>ID3</div>
+          <div>user_1</div>
+          <div>user22@gmail.com</div>
+          <div>
+            <button class="btn-delete-detail" onclick="showDeleteModal('ID3')">
+              Delete Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal modal-sm">
+        <div class="modal-body text-center">
+          <p class="modal-text">
+            Are you sure you want to delete this content?
+          </p>
+        </div>
+        <div class="modal-footer modal-footer-center">
+          <button class="btn btn-secondary" onclick="closeDeleteModal()">
+            Cancel
+          </button>
+          <button class="btn btn-danger" onclick="confirmDelete()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="logoutModal">
+      <div class="modal modal-sm">
+        <div class="modal-body text-center">
+          <p class="modal-text">Are you sure you want to log out?</p>
+        </div>
+        <div class="modal-footer modal-footer-center">
+          <button class="btn btn-secondary" onclick="closeLogoutModal()">
+            Cancel
+          </button>
+          <button class="btn btn-primary" onclick="confirmLogout()">
+            Log out
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="../scripts/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Publish Content</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/publishStyle.css" />
+  </head>
+  <body>
+    <header class="home-header">
+      <div class="home-header-inner">
+        <a href="home.html" class="home-logo">
+          <div class="home-logo-icon">LH</div>
+          <span>Learning Hub</span>
+        </a>
+
+        <div class="header-actions">
+          <div class="dropdown" id="notifDropdown">
+            <button class="notif-btn" onclick="toggleNotif()">
+              <span>Notifications</span>
+              <span class="notif-badge" id="notifCount">3</span>
+            </button>
+            <div class="notif-dropdown" id="notifPanel">
+              <div class="notif-dropdown-header">
+                <h4>Notifications</h4>
+                <!-- <button onclick="markAllRead()">Mark all read</button> -->
+              </div>
+              <div id="notifList"></div>
+            </div>
+          </div>
+
+          <span class="user-name" id="userName">user_123</span>
+          <button class="logout-btn" onclick="showLogoutModal()">
+            Log out
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="main-content">
+      <h1 class="content-section-title">Add New Content</h1>
+
+      <div class="cat-actions">
+        <button
+          id="articleBtn"
+          class="btn btn-primary"
+          onclick="selectType('article')"
+        >
+          Article
+        </button>
+        <button id="videoBtn" class="btn" onclick="selectType('video')">
+          Video
+        </button>
+        <button id="voiceBtn" class="btn" onclick="selectType('voice')">
+          Voice Note
+        </button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <input
+          type="text"
+          class="form-input disabled-input"
+          value="Science"
+          disabled
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Title *</label>
+        <input
+          type="text"
+          id="title"
+          class="form-input"
+          placeholder="My title..."
+        />
+      </div>
+
+      <div id="articleFields" class="form-group">
+        <label class="form-label">Content *</label>
+        <textarea
+          id="content"
+          class="form-input"
+          rows="8"
+          placeholder="Write your article content here..."
+        ></textarea>
+      </div>
+
+      <div id="videoFields" class="form-group hidden">
+        <label class="form-label">Video URL *</label>
+        <input
+          type="text"
+          id="videoUrl"
+          class="form-input"
+          placeholder="Enter video URL"
+        />
+      </div>
+
+      <div id="voiceFields" class="form-group hidden">
+        <label class="form-label">Record Voice *</label>
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <button
+            id="recordBtn"
+            class="btn btn-primary"
+            onclick="toggleRecording()"
+          >
+             Start Recording
+          </button>
+          <button id="stopBtn" class="btn hidden" onclick="stopRecording()">
+            ⏹ Stop
+          </button>
+        </div>
+
+        <p id="recordStatus" style="margin-top: 10px"></p>
+
+        <audio
+          id="audioPreview"
+          controls
+          class="hidden"
+          style="margin-top: 10px; width: 100%"
+        ></audio>
+      </div>
+
+      <p class="error-msg" id="errorMsg">Required fields missing</p>
+
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          margin-top: 30px;
+        "
+      >
+        <button class="btn" onclick="window.history.back()">Cancel</button>
+        <button class="btn btn-primary" onclick="publishContent()">
+          Publish
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="loadingModal">
+      <div class="modal modal-sm">
+        <div class="modal-body text-center">Uploading...</div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="successModal">
+      <div class="success-modal-box">
+        <div class="success-icon">✓</div>
+        <p id="successText">Content Published Successfully</p>
+
+        <button class="btn btn-primary" onclick="closeSuccess()">
+          Go to Home
+        </button>
+      </div>
+    </div>
+
+    <script src="../scripts/publish.js"></script>
+  </body>
+</html>

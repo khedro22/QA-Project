@@ -1,0 +1,53 @@
+.disabled-input {
+  background: #e5e7eb !important;
+  color: var(--text-secondary);
+}
+.success-modal-box {
+  background: #f3f4f6;
+  width: 700px;
+  max-width: 90%;
+  min-height: 220px;
+  border-radius: 4px;
+  padding: 40px 30px; /* added */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  box-shadow: var(--shadow-lg);
+  animation: fadeInScale 0.3s ease;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #b7d7a8;
+  color: #38761d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+  border: 1px solid #6aa84f;
+}
+
+.success-modal-box p {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

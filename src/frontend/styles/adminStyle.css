@@ -1,0 +1,68 @@
+.admin-table {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.admin-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 2fr 1.5fr;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.1rem;
+}
+
+.admin-head {
+  font-weight: 700;
+}
+
+.btn-delete-detail {
+  padding: 10px 28px;
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid var(--error-light);
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-delete-detail:hover {
+  background: var(--error);
+  color: white;
+}
+.btn-return {
+  padding: 10px 24px;
+  background: #d1d5db;
+  color: var(--text);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition);
+  white-space: nowrap;
+}
+
+.btn-return:hover {
+  background: #9ca3af;
+}
+.content-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.modal .btn-danger {
+  background: var(--error);
+  color: white;
+  padding: 10px 24px;
+}
+
+.modal .btn-danger:hover {
+  background: #b91c1c;
+}
