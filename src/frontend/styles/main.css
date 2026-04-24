@@ -222,7 +222,6 @@ a:hover {
   text-align: center;
 }
 
-
 .home-header {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
@@ -627,7 +626,7 @@ a:hover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
-    align-items: start; 
+    align-items: start;
   }
 
   .content-card {
@@ -636,8 +635,8 @@ a:hover {
     padding: 20px;
     background: var(--bg);
     transition: box-shadow var(--transition);
-    height: auto; 
-    align-self: start; 
+    height: auto;
+    align-self: start;
   }
 
   .content-card:hover {
@@ -675,7 +674,7 @@ a:hover {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: none;
   align-items: center;
   justify-content: center;
@@ -719,3 +718,5 @@ a:hover {
 .modal-footer-center {
   justify-content: center;
 }
+
+

@@ -297,7 +297,7 @@ function toggleFollow() {
 }
 
 function publishContent() {
-  alert('Navigate to publish page for category: ' + currentCategoryId);
+  window.location.href = "publish.html";
 }
 
 
