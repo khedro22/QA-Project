@@ -8,6 +8,7 @@ const authRoutes = require('./routes/auth');
 const categoryRoutes = require('./routes/categories');
 const userRoutes = require('./routes/users');
 const contentRoutes = require('./routes/content');
+const notificationRoutes = require('./routes/notifications');
 const { authMiddleware } = require('./middleware/auth');
 
 const app = express();
@@ -27,23 +28,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/content', contentRoutes);
+app.use('/api/notifications', notificationRoutes);
 
-
-
-
-// Protected route example
-app.get('/api/auth/me', authMiddleware, async (req, res) => {
-  const user = await req.user.populate('following', 'categoryName');
-  res.json({
-    user: {
-      id: user._id,
-      userName: user.userName,
-      email: user.email,
-      role: user.role,
-      following: user.following
-    }
-  });
-});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
