@@ -34,7 +34,7 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
-  window.location.href = '../pages/home.html';
+  window.location.href = './pages/home.html';
 });
 
 loginInput.addEventListener('input', function() {

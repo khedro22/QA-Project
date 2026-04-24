@@ -8,6 +8,14 @@ const DB = {
       password: 'Admin@123', 
       role: 'admin', 
       following: [] 
+    },
+    { 
+      id: 'u2', 
+      userName: 'user1', 
+      email: 'user1@learninghub.com', 
+      password: 'User@123', 
+      role: 'user', 
+      following: [] 
     }
   ]
 };

@@ -194,7 +194,6 @@ function confirmDelete() {
   window.location.href = 'home.html';
 }
 
-// Close delete modal on overlay click
 document.getElementById('deleteModal').addEventListener('click', function(e) {
   if (e.target === this) closeDeleteModal();
 });

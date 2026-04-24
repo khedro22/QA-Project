@@ -719,4 +719,16 @@ a:hover {
   justify-content: center;
 }
 
+.manage-users-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
 
+.manage-users-link:hover {
+  background: var(--primary-light);
+  color: var(--primary-hover);
+}

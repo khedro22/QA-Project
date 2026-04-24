@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learning Hub - Content Details</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../styles/main.css" />
-    <link rel="stylesheet" href="../styles/contentStyle.css" />
+    <link rel="stylesheet" href="../styles/adminStyle.css" />
   </head>
   <body>
     <header class="home-header">
@@ -16,13 +16,6 @@
         </a>
 
         <div class="header-actions">
-          <a
-            href="admin.html"
-            class="manage-users-link hidden"
-            id="manageUsersLink"
-          >
-            Manage Users
-          </a>
           <div class="dropdown" id="notifDropdown">
             <button class="notif-btn" onclick="toggleNotif()">
               <span>Notifications</span>
@@ -44,9 +37,55 @@
         </div>
       </div>
     </header>
+    <main class="main-content">
+      <div class="content-title-row">
+        <h2>All user accounts</h2>
+        <button class="btn-return" onclick="window.location.href = 'home.html'">
+          Return to Home Page
+        </button>
+      </div>
+      <div class="admin-table">
+        <div class="admin-row admin-head">
+          <div>USER ID</div>
+          <div>USERNAME</div>
+          <div>EMAIL</div>
+          <div>ACTION</div>
+        </div>
 
-    <main class="main-content" id="contentContainer"></main>
+        <div class="admin-row">
+          <div>ID1</div>
+          <div>user_123</div>
+          <div>user@gmail.com</div>
+          <div>
+            <button class="btn-delete-detail" onclick="showDeleteModal('ID1')">
+              Delete Account
+            </button>
+          </div>
+        </div>
 
+        <div class="admin-row">
+          <div>ID2</div>
+          <div>user_12</div>
+          <div>user11@gmail.com</div>
+          <div>
+            <button class="btn-delete-detail" onclick="showDeleteModal('ID2')">
+              Delete Account
+            </button>
+          </div>
+        </div>
+
+        <div class="admin-row">
+          <div>ID3</div>
+          <div>user_1</div>
+          <div>user22@gmail.com</div>
+          <div>
+            <button class="btn-delete-detail" onclick="showDeleteModal('ID3')">
+              Delete Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
     <div class="modal-overlay" id="deleteModal">
       <div class="modal modal-sm">
         <div class="modal-body text-center">
@@ -80,7 +119,6 @@
         </div>
       </div>
     </div>
-
-    <script src="../scripts/content.js"></script>
+    <script src="../scripts/admin.js"></script>
   </body>
 </html>

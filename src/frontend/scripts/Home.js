@@ -1,11 +1,5 @@
 const FakeDB = {
-  currentUser: {
-    id: 'u1',
-    userName: 'user_123',
-    email: 'user123@learninghub.com',
-    role: 'user',
-    following: ['c1', 'c2']
-  },
+
 
   users: [
     { id: 'u1', userName: 'user_123', role: 'user' },
@@ -102,6 +96,11 @@ const FakeDB = {
     }
   ]
 };
+
+const currentUser = localStorage.getItem('currentUser');
+if (currentUser) {
+  FakeDB.currentUser = JSON.parse(currentUser);
+}
 
 const Data = {
   getCategories() {
@@ -440,6 +439,12 @@ document.getElementById('logoutModal').addEventListener('click', function (e) {
   }
 });
 
+
+document.getElementById("userName").innerText = FakeDB.currentUser.username;
+
+if (FakeDB.currentUser.role === "admin") {
+  document.getElementById("manageUsersLink").classList.remove("hidden");
+}
 
 function init() {
   document.getElementById('userName').textContent = FakeDB.currentUser.userName;
