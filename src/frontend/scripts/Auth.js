@@ -1,6 +1,4 @@
-// client/js/auth.js
 
-// ========== MOCK DATABASE ==========
 const DB = {
   users: [
     { 
@@ -14,7 +12,6 @@ const DB = {
   ]
 };
 
-// ========== AUTHENTICATION ==========
 const Auth = {
   currentUser: null,
 

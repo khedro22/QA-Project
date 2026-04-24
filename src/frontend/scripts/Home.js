@@ -1,4 +1,3 @@
-// ========== FAKE DATABASE ==========
 const FakeDB = {
   currentUser: {
     id: 'u1',
@@ -104,7 +103,6 @@ const FakeDB = {
   ]
 };
 
-// ========== DATA HELPERS ==========
 const Data = {
   getCategories() {
     return FakeDB.categories.map(c => ({
@@ -172,7 +170,6 @@ const Data = {
   }
 };
 
-// ========== UI HELPERS ==========
 const UI = {
   escapeHtml(text) {
     if (!text) return '';
@@ -192,10 +189,8 @@ const UI = {
   }
 };
 
-// ========== PAGE STATE ==========
 let currentCategoryId = 'c1';
 
-// ========== NOTIFICATIONS ==========
 
 function toggleNotif() {
   const panel = document.getElementById('notifPanel');
@@ -244,7 +239,6 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// ========== CATEGORIES ==========
 
 function renderCategoryTabs() {
   const tabs = document.getElementById('catTabs');
@@ -272,7 +266,6 @@ function switchCategory(catId) {
   renderContent();
 }
 
-// ========== CATEGORY ACTIONS ==========
 
 function renderCategoryActions() {
   const container = document.getElementById('catActions');
@@ -307,9 +300,7 @@ function publishContent() {
   alert('Navigate to publish page for category: ' + currentCategoryId);
 }
 
-// ========== CONTENT CARDS ==========
 
-// ========== CONTENT - SPLIT LAYOUT ==========
 
 function renderContent() {
   const cat = Data.getCategory(currentCategoryId);
@@ -325,7 +316,6 @@ function renderContent() {
     return;
   }
 
-  // Split content by type
   const leftContent = allContent.filter(item => item.type === 'article' || item.type === 'voice');
   const rightContent = allContent.filter(item => item.type === 'video');
 
@@ -353,7 +343,6 @@ function renderContent() {
   `;
 }
 
-// LEFT COLUMN - Article Card
 function renderLeftArticleCard(item) {
   return `
     <div class="left-card">
@@ -370,7 +359,6 @@ function renderLeftArticleCard(item) {
   `;
 }
 
-// LEFT COLUMN - Voice Card
 function renderLeftVoiceCard(item) {
   return `
     <div class="left-card">
@@ -393,7 +381,6 @@ function renderLeftVoiceCard(item) {
   `;
 }
 
-// RIGHT COLUMN - Video Card
 function renderRightVideoCard(item) {
   let videoId = '';
 
@@ -430,9 +417,8 @@ function renderRightVideoCard(item) {
 
 
 function viewContent(contentId) {
-  alert('View content details: ' + contentId);
+  window.location.href = `content.html?id=${contentId}`;
 }
-// ========== LOGOUT MODAL ==========
 
 function showLogoutModal() {
   document.getElementById('logoutModal').classList.add('open');
@@ -448,14 +434,12 @@ function confirmLogout() {
   window.location.href = '../index.html';
 }
 
-// Close modal on overlay click
 document.getElementById('logoutModal').addEventListener('click', function (e) {
   if (e.target === this) {
     closeLogoutModal();
   }
 });
 
-// ========== INIT ==========
 
 function init() {
   document.getElementById('userName').textContent = FakeDB.currentUser.userName;

@@ -1,10 +1,3 @@
-// client/js/register.js
-
-// Redirect if already logged in
-if (Auth.isLoggedIn()) {
-  window.location.href = 'index.html';
-}
-
 const form = document.getElementById('registerForm');
 const formError = document.getElementById('formError');
 const formSuccess = document.getElementById('formSuccess');
@@ -28,13 +21,11 @@ form.addEventListener('submit', function(e) {
   
   let hasError = false;
 
-  // ========== USERNAME VALIDATION ==========
   if (!userName) {
     showFieldError(userNameInput, userNameError, 'Username is required');
     hasError = true;
   }
 
-  // ========== EMAIL VALIDATION ==========
   if (!email) {
     showFieldError(emailInput, emailError, 'Email is required');
     hasError = true;
@@ -49,7 +40,6 @@ form.addEventListener('submit', function(e) {
     hasError = true;
   }
 
-  // ========== PASSWORD VALIDATION ==========
   if (!password) {
     showFieldError(passwordInput, passwordError, 'Password is required');
     hasError = true;
@@ -69,7 +59,6 @@ form.addEventListener('submit', function(e) {
 
   if (hasError) return;
 
-  // Attempt registration
   const result = Auth.register(userName, email, password);
   
   if (!result.success) {
@@ -78,16 +67,14 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
-  // Success
   formSuccess.textContent = 'Account created successfully! Redirecting...';
   formSuccess.classList.add('show');
   
   setTimeout(() => {
-    window.location.href = 'index.html';
+    window.location.href = './pages/home.html';
   }, 1500);
 });
 
-// Real-time error clearing
 emailInput.addEventListener('input', function() {
   if (this.value.trim()) clearFieldError(this, emailError);
 });

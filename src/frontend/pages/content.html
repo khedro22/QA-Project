@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Hub - Content Details</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/contentStyle.css">
+</head>
+<body>
+  <header class="home-header">
+    <div class="home-header-inner">
+      <a href="home.html" class="home-logo">
+        <div class="home-logo-icon">LH</div>
+        <span>Learning Hub</span>
+      </a>
+      
+      <div class="header-actions">
+        <span class="user-name" id="userName">user_123</span>
+        <button class="logout-btn" onclick="showLogoutModal()">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content" id="contentContainer">
+  </main>
+
+  <div class="modal-overlay" id="deleteModal">
+    <div class="modal modal-sm">
+      <div class="modal-body text-center">
+        <p class="modal-text">Are you sure you want to delete this content?</p>
+      </div>
+      <div class="modal-footer modal-footer-center">
+        <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="logoutModal">
+    <div class="modal modal-sm">
+      <div class="modal-body text-center">
+        <p class="modal-text">Are you sure you want to log out?</p>
+      </div>
+      <div class="modal-footer modal-footer-center">
+        <button class="btn btn-secondary" onclick="closeLogoutModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="confirmLogout()">Log out</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/content.js"></script>
+</body>
+</html>

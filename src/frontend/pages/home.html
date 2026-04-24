@@ -1,4 +1,3 @@
-<!-- client/home.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,6 @@
   <link rel="stylesheet" href="../styles/homeStyle.css">
 </head>
 <body>
-  <!-- Header -->
   <header class="home-header">
     <div class="home-header-inner">
       <a href="home.html" class="home-logo">
@@ -18,7 +16,6 @@
       </a>
       
       <div class="header-actions">
-        <!-- Notifications -->
         <div class="dropdown" id="notifDropdown">
           <button class="notif-btn" onclick="toggleNotif()">
             <span>Notifications</span>
@@ -27,7 +24,7 @@
           <div class="notif-dropdown" id="notifPanel">
             <div class="notif-dropdown-header">
               <h4>Notifications</h4>
-              <button onclick="markAllRead()">Mark all read</button>
+              <!-- <button onclick="markAllRead()">Mark all read</button> -->
             </div>
             <div id="notifList"></div>
           </div>
@@ -38,7 +35,6 @@
       </div>
     </div>
   </header>
-  <!-- Logout Confirmation Modal -->
   <div class="modal-overlay" id="logoutModal">
     <div class="modal modal-sm">
       <div class="modal-body text-center">
@@ -53,15 +49,11 @@
 
   <script src="js/home.js"></script>
 </body>
-  <!-- Main -->
   <main class="main-content">
-    <!-- Category Tabs -->
     <div class="cat-tabs" id="catTabs"></div>
     
-    <!-- Category Actions -->
     <div class="cat-actions" id="catActions"></div>
     
-    <!-- Content Section -->
     <h2 class="content-section-title" id="sectionTitle">Science - Recent articles & media</h2>
     
     <div class="content-grid" id="contentGrid"></div>

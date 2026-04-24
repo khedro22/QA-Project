@@ -1,10 +1,3 @@
-// client/js/login.js
-
-// Redirect if already logged in
-if (Auth.isLoggedIn()) {
-  window.location.href = 'index.html';
-}
-
 const form = document.getElementById('loginForm');
 const formError = document.getElementById('formError');
 const loginInput = document.getElementById('login');
@@ -21,13 +14,11 @@ form.addEventListener('submit', function(e) {
   const password = passwordInput.value;
   let hasError = false;
 
-  // Validate login field
   if (!login) {
     showFieldError(loginInput, loginError, 'Please enter your username or email');
     hasError = true;
   }
 
-  // Validate password field
   if (!password) {
     showFieldError(passwordInput, passwordError, 'Please enter your password');
     hasError = true;
@@ -35,7 +26,6 @@ form.addEventListener('submit', function(e) {
 
   if (hasError) return;
 
-  // Attempt login
   const result = Auth.login(login, password);
   
   if (!result.success) {
@@ -44,11 +34,9 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
-  // Success
-  window.location.href = './pages/home.html';
+  window.location.href = '../pages/home.html';
 });
 
-// Real-time error clearing
 loginInput.addEventListener('input', function() {
   if (this.value.trim()) clearFieldError(this, loginError);
 });

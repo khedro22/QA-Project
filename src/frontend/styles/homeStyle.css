@@ -1,12 +1,8 @@
-/* client/css/home.css */
-
-/* Page layout */
 .home-page {
   min-height: 100vh;
   background: var(--bg-gray);
 }
 
-/* Content type badges */
 .type-tag {
   display: inline-block;
   padding: 3px 10px;
@@ -21,7 +17,6 @@
 .type-video-tag { background: #fee2e2; color: #dc2626; }
 .type-voice-tag { background: #dbeafe; color: #2563eb; }
 
-/* ========== SPLIT GRID LAYOUT ========== */
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -29,7 +24,6 @@
   align-items: start;
 }
 
-/* LEFT COLUMN - Articles & Voice */
 .content-left {
   display: flex;
   flex-direction: column;
@@ -83,7 +77,6 @@
   border-top: 1px solid var(--border-light);
 }
 
-/* RIGHT COLUMN - Videos */
 .content-right {
   display: flex;
   flex-direction: column;
@@ -126,9 +119,6 @@
   border-top: 1px solid var(--border-light);
 }
 
-/* ========== SHARED COMPONENTS ========== */
-
-/* Buttons */
 .btn-see-more {
   display: inline-flex;
   align-items: center;
@@ -164,13 +154,11 @@
   color: var(--error);
 }
 
-/* Meta text */
 .meta-text {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
 
-/* Voice Player */
 .voice-player {
   background: var(--bg-gray);
   border: 1px solid var(--border);
@@ -199,7 +187,6 @@
   font-size: 1.2rem;
 }
 
-/* Video Thumbnail */
 .video-thumbnail {
   position: relative;
   border-radius: var(--radius);
@@ -258,7 +245,6 @@
   background: white;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .content-grid {
     grid-template-columns: 1fr;
