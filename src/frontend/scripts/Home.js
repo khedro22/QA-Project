@@ -329,7 +329,7 @@ function renderContent() {
     } else {
       return renderLeftVoiceCard(item);
     }
-  }).join('') : '<p class="text-muted text-center">No articles or voice notes</p>'}
+  }).join('') : '<p class="text-muted text-center">No Content yet</p>'}
     </div>
     <div class="content-right">
       ${rightContent.length > 0 ? rightContent.map(item => {
@@ -337,7 +337,7 @@ function renderContent() {
     const isAdmin = FakeDB.currentUser.role === 'admin';
 
     return renderRightVideoCard(item);
-  }).join('') : '<p class="text-muted text-center">No videos</p>'}
+  }).join('') : '<p class="text-muted text-center">No Content yet</p>'}
     </div>
   `;
 }

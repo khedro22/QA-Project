@@ -83,13 +83,13 @@ function closeSuccess() {
 
 async function toggleRecording() {
     if (!isRecording) {
-        await startRecording();
+        await recordVoice();
     } else {
         stopRecording();
     }
 }
 
-async function startRecording() {
+async function recordVoice() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
