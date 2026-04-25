@@ -71,7 +71,7 @@ form.addEventListener('submit', function(e) {
   formSuccess.classList.add('show');
   
   setTimeout(() => {
-    window.location.href = './pages/home.html';
+    window.location.href = 'home.html';
   }, 1500);
 });
 
