@@ -8,7 +8,6 @@ let isRecording = false;
 
 function selectType(type) {
     selectedType = type;
-
     document.getElementById("articleFields").classList.add("hidden");
     document.getElementById("videoFields").classList.add("hidden");
     document.getElementById("voiceFields").classList.add("hidden");
@@ -16,6 +15,7 @@ function selectType(type) {
     document.getElementById("articleBtn").classList.remove("btn-primary");
     document.getElementById("videoBtn").classList.remove("btn-primary");
     document.getElementById("voiceBtn").classList.remove("btn-primary");
+    document.getElementById("errorMsg").classList.remove("show");
 
     if (type === "article") {
         document.getElementById("articleFields").classList.remove("hidden");
@@ -50,7 +50,16 @@ function publishContent() {
         if (!audioBlob) valid = false;
     }
 
-    if (!valid) {
+    if (!valid && selectedType === "article") {
+        document.getElementById("errorMsg").textContent = "Title and Content Required";
+        document.getElementById("errorMsg").classList.add("show");
+        return;
+    } else if (!valid && selectedType === "video") {
+        document.getElementById("errorMsg").textContent = "Title and Video URL Required";
+        document.getElementById("errorMsg").classList.add("show");
+        return;
+    } else if (!valid && selectedType === "voice") {
+        document.getElementById("errorMsg").textContent = "Title and Audio Recording Required";
         document.getElementById("errorMsg").classList.add("show");
         return;
     }
