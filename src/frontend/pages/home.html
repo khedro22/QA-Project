@@ -49,20 +49,31 @@
       </div>
     </div>
   </div>
-
-  <script src="js/home.js"></script>
+   <!-- Success Overlay -->
+    <div class="success-overlay hidden" id="successOverlay">
+      <div class="success-icon">✓</div>
+      <p class="success-text" id="successText">
+        You have been successfully logged out
+      </p>
+    </div>
 </body>
   <main class="main-content">
     <div class="cat-tabs" id="catTabs"></div>
     
     <div class="cat-actions" id="catActions"></div>
     
-    <h2 class="content-section-title" id="sectionTitle">Science - Recent articles & media</h2>
+    <h2 class="content-section-title" id="sectionTitle"></h2>
     
     <div class="content-grid" id="contentGrid"></div>
   </main>
 
-  <script src="../scripts/Home.js"></script>
+  <script src="../helper/apiHelper.js"></script>
+    <script src="../helper/uiHelper.js"></script>
+  <script src="../helper/notificationsHelper.js"></script>
+    <script src="../scripts/Home.js"></script>
+  <script src="../helper/logout.js"></script>
+
+
 </body>
 </body>
 </html>

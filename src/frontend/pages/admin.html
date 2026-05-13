@@ -46,44 +46,12 @@
       </div>
       <div class="admin-table">
         <div class="admin-row admin-head">
-          <div>USER ID</div>
           <div>USERNAME</div>
           <div>EMAIL</div>
           <div>ACTION</div>
         </div>
 
-        <div class="admin-row">
-          <div>ID1</div>
-          <div>user_123</div>
-          <div>user@gmail.com</div>
-          <div>
-            <button class="btn-delete-detail" onclick="showDeleteModal('ID1')">
-              Delete Account
-            </button>
-          </div>
-        </div>
-
-        <div class="admin-row">
-          <div>ID2</div>
-          <div>user_12</div>
-          <div>user11@gmail.com</div>
-          <div>
-            <button class="btn-delete-detail" onclick="showDeleteModal('ID2')">
-              Delete Account
-            </button>
-          </div>
-        </div>
-
-        <div class="admin-row">
-          <div>ID3</div>
-          <div>user_1</div>
-          <div>user22@gmail.com</div>
-          <div>
-            <button class="btn-delete-detail" onclick="showDeleteModal('ID3')">
-              Delete Account
-            </button>
-          </div>
-        </div>
+        <div id="usersContainer"></div>
       </div>
     </main>
     <div class="modal-overlay" id="deleteModal">
@@ -119,6 +87,16 @@
         </div>
       </div>
     </div>
+    <!-- Success Overlay -->
+    <div class="success-overlay hidden" id="successOverlay">
+      <div class="success-icon">✓</div>
+      <p class="success-text" id="successText">
+        You have been successfully logged out
+      </p>
+    </div>
     <script src="../scripts/admin.js"></script>
+    <script src="../helper/apiHelper.js"></script>
+    <script src="../helper/uiHelper.js"></script>
+    <script src="../helper/logout.js"></script>
   </body>
 </html>

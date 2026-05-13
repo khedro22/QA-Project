@@ -40,16 +40,16 @@ router.get('/:id', async (req, res) => {
 
 //  Create content 
 router.post('/', authMiddleware, (req, res, next) => {
-  const contentType = req.body.type;
-  
-  if (contentType === 'voice') {
+  const isMultipart = req.headers['content-type']?.includes('multipart/form-data');
+
+  if (isMultipart) {
     voiceUpload.single('voiceFile')(req, res, next);
   } else {
     next();
   }
 }, async (req, res) => {
   try {
-    const { contentName, type, description, categoryId, url} = req.body;
+    const { contentName, type, description, categoryId, url } = req.body;
 
     if (!contentName || !type || !categoryId) {
       cleanupFile(req);
@@ -75,19 +75,19 @@ router.post('/', authMiddleware, (req, res, next) => {
         return res.status(400).json({ message: 'Video URL is required.' });
       }
       contentData.url = url.trim();
-      
+
     } else if (type === 'voice') {
       if (!req.file) {
         return res.status(400).json({ message: 'Voice recording file is required.' });
       }
       contentData.voiceFile = `/uploads/${req.file.filename}`;
-      
+
     } else if (type === 'article') {
       if (!description || description.trim() === '') {
         return res.status(400).json({ message: 'Article text is required.' });
       }
       contentData.description = description.trim();
-      
+
     } else {
       return res.status(400).json({ message: 'Invalid content type.' });
     }
@@ -98,9 +98,9 @@ router.post('/', authMiddleware, (req, res, next) => {
     await content.populate('userId', 'userName');
     await content.populate('categoryId', 'categoryName');
 
-    
+
     const followers = await User.find({ following: categoryId });
-    
+
     if (followers.length > 0) {
       const notifications = followers
         .filter(follower => follower._id.toString() !== req.user._id.toString())
@@ -157,7 +157,7 @@ router.delete('/:id', authMiddleware, async (req, res) => {
 function cleanupFile(req) {
   if (req.file) {
     const fs = require('fs').promises;
-    fs.unlink(req.file.path).catch(() => {});
+    fs.unlink(req.file.path).catch(() => { });
   }
 }
 
@@ -165,7 +165,7 @@ async function deleteFile(filePath) {
   if (!filePath) return;
   const fs = require('fs').promises;
   const cleanPath = filePath.replace('/uploads/', 'uploads/');
-  await fs.unlink(cleanPath).catch(() => {});
+  await fs.unlink(cleanPath).catch(() => { });
 }
 
 module.exports = router;
