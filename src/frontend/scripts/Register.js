@@ -59,7 +59,7 @@ form.addEventListener('submit', function(e) {
 
   if (hasError) return;
 
-  const result = Auth.register(userName, email, password);
+  const result = Auth.signup(userName, email, password);
   
   if (!result.success) {
     formError.textContent = result.message;
@@ -71,7 +71,7 @@ form.addEventListener('submit', function(e) {
   formSuccess.classList.add('show');
   
   setTimeout(() => {
-    window.location.href = './pages/home.html';
+    window.location.href = 'home.html';
   }, 1500);
 });
 

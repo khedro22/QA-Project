@@ -51,7 +51,7 @@ const Auth = {
     return { success: true, user: this.currentUser };
   },
 
-  register(userName, email, password) {
+  signup(userName, email, password) {
     if (DB.users.find(u => u.userName === userName)) {
       return { success: false, message: 'Username already taken' };
     }
