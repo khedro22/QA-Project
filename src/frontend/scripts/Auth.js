@@ -1,92 +1,70 @@
-
-const DB = {
-  users: [
-    { 
-      id: 'u1', 
-      userName: 'admin', 
-      email: 'admin@learninghub.com', 
-      password: 'Admin@123', 
-      role: 'admin', 
-      following: [] 
-    },
-    { 
-      id: 'u2', 
-      userName: 'user1', 
-      email: 'user1@learninghub.com', 
-      password: 'User@123', 
-      role: 'user', 
-      following: [] 
-    }
-  ]
-};
+const API_URL = 'http://localhost:3000/api';
 
 const Auth = {
   currentUser: null,
 
   init() {
     const saved = localStorage.getItem('currentUser');
+    localStorage.setItem('BaseUrl', API_URL);
+
     if (saved) {
       this.currentUser = JSON.parse(saved);
     }
   },
 
-  login(login, password) {
-    const user = DB.users.find(u => 
-      (u.userName === login || u.email === login) && u.password === password
-    );
+  async login(login, password) {
+    try {
+      const res = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login, password })
+      });
 
-    if (!user) {
-      return { success: false, message: 'Invalid username/email or password' };
+      const result = await res.json();
+
+      if (!res.ok) {
+        return { success: false, message: result.message };
+      }
+
+      this.currentUser = result.user;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      localStorage.setItem('token', result.token);
+      return { success: true, user: this.currentUser };
+
+    } catch (err) {
+      return { success: false, message: 'Network error. Is the server running?' };
     }
-
-    this.currentUser = {
-      id: user.id,
-      userName: user.userName,
-      email: user.email,
-      role: user.role,
-      following: user.following
-    };
-
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    return { success: true, user: this.currentUser };
   },
 
-  register(userName, email, password) {
-    if (DB.users.find(u => u.userName === userName)) {
-      return { success: false, message: 'Username already taken' };
+  async signup(userName, email, password) {
+    try {
+      const res = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userName, email, password })
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        return { success: false, message: result.message };
+      }
+
+      this.currentUser = result.user;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+      localStorage.setItem('token', result.token);
+      return { success: true, user: this.currentUser };
+
+    } catch (err) {
+      return { success: false, message: 'Network error. Is the server running?' };
     }
-
-    if (DB.users.find(u => u.email === email)) {
-      return { success: false, message: 'Email already registered' };
-    }
-
-    const newUser = {
-      id: 'u' + Date.now(),
-      userName: userName,
-      email: email,
-      password: password,
-      role: 'user',
-      following: []
-    };
-
-    DB.users.push(newUser);
-
-    this.currentUser = {
-      id: newUser.id,
-      userName: newUser.userName,
-      email: newUser.email,
-      role: newUser.role,
-      following: newUser.following
-    };
-
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    return { success: true, user: this.currentUser };
   },
 
   logout() {
     this.currentUser = null;
     localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
   },
 
   isLoggedIn() {
@@ -95,6 +73,10 @@ const Auth = {
 
   isAdmin() {
     return this.currentUser?.role === 'admin';
+  },
+
+  getToken() {
+    return localStorage.getItem('token');
   }
 };
 

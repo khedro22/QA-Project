@@ -10,15 +10,15 @@ const emailError = document.getElementById('emailError');
 const userNameError = document.getElementById('userNameError');
 const passwordError = document.getElementById('passwordError');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', async function (e) {
   e.preventDefault();
-  
+
   clearAllErrors();
-  
+
   const email = emailInput.value.trim();
   const userName = userNameInput.value.trim();
   const password = passwordInput.value;
-  
+
   let hasError = false;
 
   if (!userName) {
@@ -37,6 +37,9 @@ form.addEventListener('submit', function(e) {
     hasError = true;
   } else if (!isValidEmailFormat(email)) {
     showFieldError(emailInput, emailError, 'Email must be in format name@domain.com');
+    hasError = true;
+  } else if (!email.includes('@gmail.com')) {
+    showFieldError(emailInput, emailError, 'Email must be a Gmail address');
     hasError = true;
   }
 
@@ -59,31 +62,28 @@ form.addEventListener('submit', function(e) {
 
   if (hasError) return;
 
-  const result = Auth.register(userName, email, password);
-  
+  const result = await Auth.signup(userName, email, password);
+
   if (!result.success) {
     formError.textContent = result.message;
     formError.classList.add('show');
     return;
   }
 
-  formSuccess.textContent = 'Account created successfully! Redirecting...';
-  formSuccess.classList.add('show');
-  
-  setTimeout(() => {
-    window.location.href = 'home.html';
-  }, 1500);
+
+  window.location.replace('home.html');
+
 });
 
-emailInput.addEventListener('input', function() {
+emailInput.addEventListener('input', function () {
   if (this.value.trim()) clearFieldError(this, emailError);
 });
 
-userNameInput.addEventListener('input', function() {
+userNameInput.addEventListener('input', function () {
   if (this.value.trim()) clearFieldError(this, userNameError);
 });
 
-passwordInput.addEventListener('input', function() {
+passwordInput.addEventListener('input', function () {
   if (this.value) clearFieldError(this, passwordError);
 });
 

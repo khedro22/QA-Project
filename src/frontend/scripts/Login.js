@@ -5,7 +5,7 @@ const passwordInput = document.getElementById('password');
 const loginError = document.getElementById('loginError');
 const passwordError = document.getElementById('passwordError');
 
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', async function(e) {
   e.preventDefault();
   
   clearErrors();
@@ -26,7 +26,7 @@ form.addEventListener('submit', function(e) {
 
   if (hasError) return;
 
-  const result = Auth.login(login, password);
+  const result = await Auth.login(login, password);
   
   if (!result.success) {
     formError.textContent = result.message;
@@ -34,7 +34,7 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
-  window.location.href = './pages/home.html';
+  window.location.replace('./pages/home.html');
 });
 
 loginInput.addEventListener('input', function() {
