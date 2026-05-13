@@ -95,3 +95,6 @@ async function init() {
   await fetchUsers();
 }
 init();
+document.addEventListener("DOMContentLoaded", () => {
+  window.NotificationsHelper.start();
+});

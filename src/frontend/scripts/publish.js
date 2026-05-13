@@ -123,10 +123,10 @@ function validate() {
     if (!title) {
         showError('title', 'titleError', 'Title is required');
         hasError = true;
-    }else if (title.length < 3) {
+    } else if (title.length < 3) {
         showError('title', 'titleError', 'Title must be at least 3 characters');
         hasError = true;
-    }else if (title.length > 20) {
+    } else if (title.length > 20) {
         showError('title', 'titleError', 'Title must be at most 20 characters');
         hasError = true;
     }
@@ -136,10 +136,10 @@ function validate() {
         if (!content) {
             showError('articleContent', 'contentError', 'Content is required');
             hasError = true;
-        }else if (content.length < 3) {
+        } else if (content.length < 3) {
             showError('articleContent', 'contentError', 'Content must be at least 3 characters');
             hasError = true;
-        }else if (content.length > 600) {
+        } else if (content.length > 600) {
             showError('articleContent', 'contentError', 'Content must be at most 600 characters');
             hasError = true;
         }
@@ -210,7 +210,7 @@ document.getElementById('publishForm').addEventListener('submit', async function
 
             const response = await fetch(`${API_URL}/content`, {
                 method: 'POST',
-                headers: {'Authorization': `Bearer ${ApiHelper.getToken()}`},
+                headers: { 'Authorization': `Bearer ${ApiHelper.getToken()}` },
                 body: formData
             });
 
@@ -258,3 +258,6 @@ async function init() {
 }
 
 init();
+document.addEventListener("DOMContentLoaded", () => {
+    window.NotificationsHelper.start();
+});

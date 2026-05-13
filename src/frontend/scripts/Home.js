@@ -252,7 +252,9 @@ async function init() {
   }
 
   await renderCategoryTabs();
-  await NotificationsHelper.renderNotifications();
 }
 
 init();
+document.addEventListener("DOMContentLoaded", () => {
+  window.NotificationsHelper.start();
+});

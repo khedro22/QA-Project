@@ -167,7 +167,11 @@ async function init() {
       document.getElementById("manageUsersLink").classList.remove("hidden");
     }
   }
+
   renderContent();
 }
 
 init();
+document.addEventListener("DOMContentLoaded", () => {
+  window.NotificationsHelper.start();
+});
