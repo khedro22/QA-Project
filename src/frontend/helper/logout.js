@@ -1,4 +1,3 @@
-// ========== LOGOUT ==========
 
 function showLogoutModal() {
   document.getElementById('logoutModal')?.classList.add('open');
@@ -19,7 +18,6 @@ function confirmLogout() {
   }, 2000);
 }
 
-// Close modal on outside click
 document.addEventListener('DOMContentLoaded', () => {
   const logoutModal = document.getElementById('logoutModal');
 

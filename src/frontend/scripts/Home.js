@@ -1,16 +1,5 @@
-
-// // ========== PREVENT BACK TO LOGIN ==========
-// history.pushState(null, null, location.href);
-// window.onpopstate = function () {
-//   history.pushState(null, null, location.href);
-// };
-
-// ========== STATE ==========
 let currentCategoryId = null;
 let currentUser = null;
-
-// ========== NOTIFICATIONS ==========
-
 
 document.addEventListener('click', function (e) {
   if (!e.target.closest('#notifDropdown')) {
@@ -18,7 +7,6 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// ========== CATEGORIES ==========
 
 async function renderCategoryTabs() {
   try {
@@ -59,7 +47,6 @@ async function switchCategory(catId) {
   renderContent();
 }
 
-// ========== CATEGORY ACTIONS ==========
 
 async function renderCategoryActions() {
   try {
@@ -110,7 +97,6 @@ function publishContent() {
   window.location.href = `publish.html?category=${currentCategoryId}`;
 }
 
-// ========== CONTENT ==========
 
 async function renderContent() {
   if (!currentCategoryId) return;
@@ -234,7 +220,6 @@ function viewContent(contentId) {
   window.location.href = `content.html?id=${contentId}`;
 }
 
-// ========== INIT ==========
 
 async function init() {
   // Load current user
