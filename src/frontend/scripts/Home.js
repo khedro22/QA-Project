@@ -234,6 +234,8 @@ async function init() {
     if (currentUser.role === "admin") {
       document.getElementById("manageUsersLink").classList.remove("hidden");
     }
+  } else {
+    location.replace('../index.html');
   }
 
   await renderCategoryTabs();

@@ -254,6 +254,9 @@ document.getElementById('videoUrl').addEventListener('input', () => {
 
 // ========== INIT ==========
 async function init() {
+    if (!localStorage.getItem('currentUser')) {
+        location.replace('../index.html');
+    }
     await getCategoryFromUrl();
 }
 

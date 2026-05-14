@@ -12,10 +12,11 @@ function confirmLogout() {
 
   localStorage.removeItem('token');
   localStorage.removeItem('currentUser');
-  document.getElementById('successOverlay').classList.remove('hidden');
-  setTimeout(() => {
-    window.location.replace('../index.html');
-  }, 2000);
+  // document.getElementById('successOverlay').classList.remove('hidden');
+  // setTimeout(() => {
+  // }, 2000);
+  window.location.replace('../index.html');
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -91,6 +91,8 @@ async function init() {
   const saved = localStorage.getItem('currentUser');
   if (saved) {
     currentUser = JSON.parse(saved);
+  } else {
+    location.replace('../index.html');
   }
   await fetchUsers();
 }
