@@ -9,6 +9,7 @@ const Auth = {
 
     if (saved) {
       this.currentUser = JSON.parse(saved);
+      location.replace('./pages/home.html');
     }
   },
 
@@ -58,13 +59,6 @@ const Auth = {
     } catch (err) {
       return { success: false, message: 'Network error. Is the server running?' };
     }
-  },
-
-  logout() {
-    this.currentUser = null;
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('token');
-    window.location.href = 'login.html';
   },
 
   isLoggedIn() {
